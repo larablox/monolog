@@ -1,0 +1,19 @@
+{
+	"name": "larablox/monolog",
+	"globIgnorePaths": ["**/package.json", "**/tsconfig.json"],
+	"tree": {
+		"$className": "DataModel",
+		"ReplicatedStorage": {
+			"$className": "ReplicatedStorage",
+			"node_modules": {
+				"$className": "Folder",
+				"@rbxts": {
+					"$path": "node_modules/@rbxts"
+				}
+			},
+			"Monolog": {
+				"$path": "out/Monolog"
+			}
+		}
+	}
+}

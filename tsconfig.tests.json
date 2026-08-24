@@ -1,0 +1,40 @@
+{
+	"compilerOptions": {
+		// required (mirrors tsconfig.json)
+		"allowSyntheticDefaultImports": true,
+		"downlevelIteration": true,
+		"jsx": "react",
+		"jsxFactory": "React.createElement",
+		"jsxFragmentFactory": "React.Fragment",
+		"module": "commonjs",
+		"moduleResolution": "Node",
+		"noLib": true,
+		"resolveJsonModule": true,
+		"experimentalDecorators": true,
+		"forceConsistentCasingInFileNames": true,
+		"moduleDetection": "force",
+		"strict": true,
+		"target": "ESNext",
+		"typeRoots": ["node_modules/@rbxts"],
+
+		// `src` and `tests` are merged into one virtual directory instead of
+		// `rootDir`: with a plain `rootDir` (a real ancestor both must sit
+		// under), the only common ancestor is the repo root, and roblox-ts's
+		// asset-copy step then tries to copy the whole repo into `outDir`,
+		// which sits inside it -- a hard crash, not a config knob. `rootDirs`
+		// avoids that because it doesn't require a real containing folder:
+		// TypeScript treats `src/Monolog/X.ts` and `tests/Monolog/X.spec.ts`
+		// as if both lived under one `Monolog/...` directory, so this config
+		// recompiles its own copy of `src/Monolog` (the publish build,
+		// `tsconfig.json`, is untouched) and every spec lands right next to
+		// the class it covers in `out-tests/Monolog/...` -- see "## Tests" in
+		// `CLAUDE.md`.
+		"rootDirs": ["src", "tests"],
+		"outDir": "out-tests",
+		"baseUrl": "src",
+		"declaration": true,
+		"incremental": true,
+		"tsBuildInfoFile": "out-tests/tsconfig.tsbuildinfo"
+	},
+	"include": ["src/**/*.ts", "tests/**/*.ts"]
+}
