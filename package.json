@@ -1,7 +1,7 @@
 {
     "$schema": "https://www.schemastore.org/package.json",
     "name": "@larablox/monolog",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "The Larablox port of Monolog.",
     "license": "MIT",
     "keywords": ["monolog", "logging", "larablox", "roblox-ts"],
