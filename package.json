@@ -1,10 +1,15 @@
 {
     "$schema": "https://www.schemastore.org/package.json",
     "name": "@larablox/monolog",
-    "version": "0.1.1",
+    "version": "0.2.0",
     "description": "The Larablox port of Monolog.",
     "license": "MIT",
-    "keywords": ["monolog", "logging", "larablox", "roblox-ts"],
+    "keywords": [
+        "monolog",
+        "logging",
+        "larablox",
+        "roblox-ts"
+    ],
     "homepage": "https://github.com/larablox/monolog",
     "repository": {
         "type": "git",
@@ -16,7 +21,10 @@
     "publishConfig": {
         "access": "public"
     },
-    "files": ["out/Monolog", "out/index.d.ts"],
+    "files": [
+        "out/Monolog",
+        "out/index.d.ts"
+    ],
     "types": "out/index.d.ts",
     "type": "module",
     "scripts": {
