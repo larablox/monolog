@@ -39,39 +39,48 @@ so consumers deep-import each class the way the example above does.
 
 ## What's included
 
-- `Logger`, `Level`, `LogRecord`, `Registry`, `Utils`, `ResettableInterface`
+- Core: `Logger`, `LoggerInterface` (the PSR-3 shape), `Level`, `LogRecord`,
+  `Registry`, `Utils`, `ResettableInterface`
 - Handlers: `NullHandler`, `RobloxConsoleHandler` (writes formatted records to
   the Roblox output console), and `TestHandler` for your own tests
 - Wrapping handlers: `GroupHandler`, `WhatFailureGroupHandler`,
   `FingersCrossedHandler` (with `ErrorLevelActivationStrategy` and
   `ChannelLevelActivationStrategy`)
+- Handler base classes and interfaces, for writing your own: `Handler`,
+  `AbstractHandler`, `AbstractProcessingHandler`, `HandlerInterface`,
+  `FormattableHandlerInterface`, `ProcessableHandlerInterface`
 - Formatters: `NormalizerFormatter`, `LineFormatter`, `JsonFormatter`,
-  `ScalarFormatter`
+  `ScalarFormatter`, `HtmlFormatter`, and `FormatterInterface`
 - Processors: `PsrLogMessageProcessor`, `ClosureContextProcessor`,
   `IntrospectionProcessor`, `MemoryUsageProcessor`, `MemoryPeakUsageProcessor`,
-  `ProcessIdProcessor`, `TagProcessor`, `UidProcessor`
+  `ProcessIdProcessor`, `TagProcessor`, `UidProcessor`, and
+  `ProcessorInterface`
 - Attributes: `WithMonologChannel`, `AsMonologProcessor`
+- Test helpers: `Test/MonologTestCase` (plus `Test/TestCase`, upstream's
+  deprecated alias for it), shipped in the published package the same way
+  upstream ships them, because consumers use them in their own suites
 
 ## Submitting bugs and feature requests
 
 Bugs and feature requests are tracked on
 [GitHub](https://github.com/larablox/monolog/issues).
 
-### Requirements
+## Requirements
 
 - TypeScript 5.x compiled with [roblox-ts](https://roblox-ts.com/) `^3.0`
 - A Rojo-synced Roblox place to run the compiled output in
 
-### Framework Integration
+## Framework Integration
 
 [`larablox/framework`](https://github.com/larablox/framework)'s
 `Illuminate\Log` is built on this package.
 
-### License
+## License
 
 MIT, matching upstream Monolog.
 
-### Acknowledgements
+## Acknowledgements
 
 This is a TypeScript/roblox-ts port of [Monolog](https://github.com/Seldaek/monolog)
-by Jordi Boggiano, adapted to run on the Roblox platform as faithfully as it  allows.
+by Jordi Boggiano, adapted to run on the Roblox platform as faithfully as it
+allows.
