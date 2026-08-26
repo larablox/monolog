@@ -2,15 +2,20 @@ import { AbstractHandler } from "Monolog/Handler/AbstractHandler";
 import { LineFormatter } from "Monolog/Formatter/LineFormatter";
 import { isResettable } from "Monolog/ResettableInterface";
 import { runProcessor } from "Monolog/Processor/ProcessorInterface";
+import type { FormattableHandlerInterface } from "Monolog/Handler/FormattableHandlerInterface";
 import type { FormatterInterface } from "Monolog/Formatter/FormatterInterface";
 import type { LogRecord } from "Monolog/LogRecord";
+import type { ProcessableHandlerInterface } from "Monolog/Handler/ProcessableHandlerInterface";
 import type { Processor } from "Monolog/Processor/ProcessorInterface";
 
 /**
  * PHP: `Monolog\Handler\AbstractProcessingHandler`, which folds in
  * `ProcessableHandlerTrait` and `FormattableHandlerTrait`.
  */
-export abstract class AbstractProcessingHandler extends AbstractHandler {
+export abstract class AbstractProcessingHandler
+    extends AbstractHandler
+    implements ProcessableHandlerInterface, FormattableHandlerInterface
+{
     protected processors = new Array<Processor>();
 
     protected formatter?: FormatterInterface;

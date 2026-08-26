@@ -85,19 +85,14 @@ suite -- see `agent_docs/testing.md`.
   hostname or load-average concept on Roblox. `WebProcessor` -- no PHP
   `$_SERVER` web-request superglobal here, and no web framework of any kind in
   this package for one to come from.
-- **Handler**: `FingersCrossedHandler`, `GroupHandler`,
-  `WhatFailureGroupHandler` -- real upstream classes, out of scope for this
+- **Handler**: `FallbackGroupHandler` -- a real upstream class, sibling to the
+  now-ported `GroupHandler`/`WhatFailureGroupHandler`, out of scope for this
   pass. Every other upstream handler (`StreamHandler`, `SyslogHandler`,
-  `RedisHandler`, the mail/HTTP/queue handlers, etc.) is out of scope for the
-  same reason: this port ships only what the platform can actually back --
+  `RedisHandler`, the mail/HTTP/queue handlers, etc.) is out of scope because
+  this port ships only what the platform can actually back --
   `NullHandler` and `RobloxConsoleHandler`, the Roblox output console adapted
   from `PHPConsoleHandler`. `TestHandler` is the one exception: like
   `MonologTestCase`, it ships in upstream's real (non-dev) autoload because
   library consumers use it in their own tests, so it is test infrastructure,
   not a shipped handler, and is ported at
   `src/Monolog/Handler/TestHandler.ts` on that basis.
-
-  Dropping `FingersCrossedHandler`/`GroupHandler`/`WhatFailureGroupHandler`
-  means `larablox/framework`'s `LogManager` (its `stack` driver in
-  particular) does not build against this package as-is -- that consumer
-  needs updating separately, it was not done as part of this pass.

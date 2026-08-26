@@ -14,3 +14,27 @@ export interface HandlerInterface {
     /** Closes the handler. */
     close(): void;
 }
+
+/**
+ * True when the given value implements `HandlerInterface`.
+ *
+ * PHP checks this with `instanceof` -- `GroupHandler`'s constructor and
+ * `FingersCrossedHandler::getHandler()` both reject a non-handler at runtime.
+ * There is no `instanceof` for an interface here, so this checks structurally
+ * for the four callable members, as `isResettable()`
+ * (`ResettableInterface.ts`) already does for its own interface.
+ */
+export function isHandler(value: unknown): value is HandlerInterface {
+    if (!typeIs(value, "table")) {
+        return false;
+    }
+
+    const candidate = value as Partial<HandlerInterface>;
+
+    return (
+        typeIs(candidate.isHandling, "function") &&
+        typeIs(candidate.handle, "function") &&
+        typeIs(candidate.handleBatch, "function") &&
+        typeIs(candidate.close, "function")
+    );
+}
