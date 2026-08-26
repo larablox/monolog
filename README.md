@@ -27,7 +27,7 @@ import { Level } from "@larablox/monolog/out/Monolog/Level";
 
 // create a log channel
 const log = new Logger("name");
-log.pushHandler(new RobloxConsoleHandler({}, Level.Warning));
+log.pushHandler(new RobloxConsoleHandler(Level.Warning));
 
 // add records to the log
 log.warning("Foo");
@@ -40,8 +40,8 @@ so consumers deep-import each class the way the example above does.
 ## What's included
 
 - `Logger`, `Level`, `LogRecord`, `Registry`, `Utils`, `ResettableInterface`
-- Handlers: `NullHandler`, `RobloxConsoleHandler` (the output-console adaptation
-  of `PHPConsoleHandler`), and `TestHandler` for your own tests
+- Handlers: `NullHandler`, `RobloxConsoleHandler` (writes formatted records to
+  the Roblox output console), and `TestHandler` for your own tests
 - Wrapping handlers: `GroupHandler`, `WhatFailureGroupHandler`,
   `FingersCrossedHandler` (with `ErrorLevelActivationStrategy` and
   `ChannelLevelActivationStrategy`)
