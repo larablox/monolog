@@ -28,6 +28,14 @@ export default [
 			...robloxTs.configs.recommended.rules,
 			...prettierConfig.rules,
 			"prettier/prettier": "warn",
+			// A `_`-prefixed parameter is deliberately unused: it keeps a
+			// signature that an interface or an upstream Monolog class
+			// requires (`FingersCrossedHandler.isHandling()` ignores its
+			// record) without eslint reading that as dead code.
+			"@typescript-eslint/no-unused-vars": [
+				"error",
+				{ argsIgnorePattern: "^_" },
+			],
 		},
 	},
 ];

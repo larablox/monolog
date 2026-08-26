@@ -42,6 +42,9 @@ so consumers deep-import each class the way the example above does.
 - `Logger`, `Level`, `LogRecord`, `Registry`, `Utils`, `ResettableInterface`
 - Handlers: `NullHandler`, `RobloxConsoleHandler` (the output-console adaptation
   of `PHPConsoleHandler`), and `TestHandler` for your own tests
+- Wrapping handlers: `GroupHandler`, `WhatFailureGroupHandler`,
+  `FingersCrossedHandler` (with `ErrorLevelActivationStrategy` and
+  `ChannelLevelActivationStrategy`)
 - Formatters: `NormalizerFormatter`, `LineFormatter`, `JsonFormatter`,
   `ScalarFormatter`
 - Processors: `PsrLogMessageProcessor`, `ClosureContextProcessor`,
