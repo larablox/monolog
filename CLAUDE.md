@@ -89,10 +89,11 @@ suite -- see `agent_docs/testing.md`.
   now-ported `GroupHandler`/`WhatFailureGroupHandler`, out of scope for this
   pass. Every other upstream handler (`StreamHandler`, `SyslogHandler`,
   `RedisHandler`, the mail/HTTP/queue handlers, etc.) is out of scope because
-  this port ships only what the platform can actually back --
-  `NullHandler` and `RobloxConsoleHandler`, the Roblox output console adapted
-  from `PHPConsoleHandler`. `TestHandler` is the one exception: like
-  `MonologTestCase`, it ships in upstream's real (non-dev) autoload because
-  library consumers use it in their own tests, so it is test infrastructure,
-  not a shipped handler, and is ported at
-  `src/Monolog/Handler/TestHandler.ts` on that basis.
+  this port ships only what the platform can actually back -- `NullHandler`,
+  plus `RobloxConsoleHandler`, which is not a port at all but an original
+  class for this platform (a `StreamHandler` whose stream is the Roblox
+  output console; see its class comment).
+  `TestHandler` is the one exception: like `MonologTestCase`, it ships in
+  upstream's real (non-dev) autoload because library consumers use it in their
+  own tests, so it is test infrastructure, not a shipped handler, and is
+  ported at `src/Monolog/Handler/TestHandler.ts` on that basis.
